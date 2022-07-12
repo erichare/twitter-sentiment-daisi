@@ -1,4 +1,5 @@
 import pydaisi as pyd
+import pandas as pd
 
 tw_daisi = pyd.Daisi("erichare/Twitter Search", instance="dev3")
 sa_daisi = pyd.Daisi("erichare/Sentiment Analysis", instance="dev3")
