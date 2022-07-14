@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     with st.sidebar:
         query = st.text_input('Twitter Search Keyword', 'Daisi Python')
-        count = st.number_input("Number of Tweets", min_value=1, max_value=100, value=10, step=1)
+        count = st.number_input("Number of Tweets", min_value=1, max_value=100, value=50, step=1)
 
     with st.expander("Inference with PyDaisi", expanded=True):
         st.markdown(f"""
