@@ -71,7 +71,7 @@ if __name__ == "__main__":
 
     st.markdown("## Aggregate Results")
 
-    res = pd.concat(final_results).groupby(['label']).size().to_frame(name = 'size').reset_index()
+    res = pd.concat(final_results).groupby(['sentiment']).size().to_frame(name = 'size').reset_index()
     res.columns = ["Sentiment", "Number of Tweets"]
 
     st.table(res)
