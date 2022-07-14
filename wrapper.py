@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     with st.sidebar:
         query = st.text_input('Twitter Search Keyword', 'Python')
-        count = st.number_input("Number of Tweets", min_value=1, max_value=100, value=50, step=1)
+        count = st.number_input("Number of Tweets", min_value=1, max_value=100, value=10, step=1)
 
     with st.expander("Inference with PyDaisi", expanded=True):
         st.markdown(f"""
@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
             my_sent = get_twitter_sentiment(query, count=count, tweets=tweets[i:max_ind])
             final_results.append(my_sent)
-            
+
             element.empty()
             element = st.table(pd.concat(final_results))
 
