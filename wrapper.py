@@ -32,6 +32,8 @@ if __name__ == "__main__":
     st.set_page_config(layout = "wide")
     st.title("Twitter Sentiment Analysis with Daisies")
 
+    st.markdown("## Information")
+
     st.markdown("This Wrapper Daisi calls two other Daisies, the [Twitter Search](https://app.daisi.io/daisies/5636b873-4ed9-44c2-a737-ad9b95dedfba/info) Daisi, and the [Sentiment Analysis](https://dev3.daisi.io/daisies/dd7ca16b-efeb-47b4-80ca-2f77ef106739/info) Daisi, to perform a Sentiment Analysis of the ten most recent tweets related to your query!")
     st.markdown("NOTE: Please use PyDaisi and the API interface for processing more than 100 tweets!")
 
@@ -53,6 +55,7 @@ if __name__ == "__main__":
 
     tweets = tw_daisi.fetch_tweets(query, count).value
 
+    st.markdown("## Tweet Sentiment")
     final_results = []
     element = st.empty()
     with st.spinner('Fetching tweets and computing sentiment...'):
@@ -64,4 +67,7 @@ if __name__ == "__main__":
             element.empty()
             element = st.dataframe(pd.concat(final_results))
 
-    st.success('Done!')
+    st.markdown("## Aggregate Results")
+    res = pd.concat(final_results).groupby(['label']).size().to_frame(name = 'size').reset_index()
+    res.columns = ["Sentiment", "Number of Tweets"]
+    st.dataframe(res)
