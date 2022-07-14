@@ -5,6 +5,12 @@ import streamlit as st
 tw_daisi = pyd.Daisi("erichare/Twitter Search")
 sa_daisi = pyd.Daisi("erichare/Sentiment Analysis")
 
+@st.cache
+def _tweet_fetch(query, count):
+    tweets = tw_daisi.fetch_tweets(query, count).value
+
+    return tweets
+
 def get_twitter_sentiment(query: str, count: int=100, tweets=None):
     '''
     Interface with the Twitter API to fetch tweets related to the given query and derive the sentiment
@@ -53,9 +59,8 @@ if __name__ == "__main__":
         ```
         """)
 
-    tweets = tw_daisi.fetch_tweets(query, count).value
-
     st.markdown("## Tweet Sentiment")
+    tweets = _tweet_fetch(query, count)
 
     final_results = []
     element = st.empty()
