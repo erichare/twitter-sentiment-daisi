@@ -6,6 +6,18 @@ tw_daisi = pyd.Daisi("erichare/Twitter Search", instance="dev3")
 sa_daisi = pyd.Daisi("erichare/Sentiment Analysis", instance="dev3")
 
 def get_twitter_sentiment(query: str, count: int=10):
+    '''
+    Interface with the Twitter API to fetch tweets related to the given query and derive the sentiment
+    
+    This function wraps two other Daisies in order to derive the sentiment of tweets related
+    to the given query
+
+    :param str query: The search query to provide to Twitter
+    :param int count: The maximum number of tweets to retrieve
+    
+    :return: Author and text of tweets related to the given query, along with the sentiment of each
+    '''
+
     result = tw_daisi.fetch_tweets(query, count).value
     sentiment = sa_daisi.get_sentiment([x for x in result["text"].tolist()]).value
 
