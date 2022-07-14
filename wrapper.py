@@ -56,6 +56,7 @@ if __name__ == "__main__":
     tweets = tw_daisi.fetch_tweets(query, count).value
 
     st.markdown("## Tweet Sentiment")
+
     final_results = []
     element = st.empty()
     with st.spinner('Fetching tweets and computing sentiment...'):
@@ -64,10 +65,13 @@ if __name__ == "__main__":
 
             my_sent = get_twitter_sentiment(query, count=count, tweets=tweets[i:max_ind])
             final_results.append(my_sent)
+            
             element.empty()
             element = st.table(pd.concat(final_results))
 
     st.markdown("## Aggregate Results")
+
     res = pd.concat(final_results).groupby(['label']).size().to_frame(name = 'size').reset_index()
     res.columns = ["Sentiment", "Number of Tweets"]
+
     st.table(res)
