@@ -23,8 +23,8 @@ def get_twitter_sentiment(query: str, count: int=100, tweets=None):
 
     sentiment = sa_daisi.get_sentiment([x for x in tweets["text"].tolist()]).value
 
-    tweets["label"] = [x["label"] for x in sentiment]
-    tweets["sentiment"] = [x["score"] for x in sentiment]
+    tweets["sentiment"] = [x["label"] for x in sentiment]
+    tweets["score"] = [x["score"] for x in sentiment]
 
     return tweets
 
