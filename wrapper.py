@@ -1,6 +1,6 @@
 import pydaisi as pyd
 import pandas as pd
-import streamlit as st
+import streamlit as st # For UI support
 
 tw_daisi = pyd.Daisi("erichare/Twitter Search")
 sa_daisi = pyd.Daisi("erichare/Sentiment Analysis")
