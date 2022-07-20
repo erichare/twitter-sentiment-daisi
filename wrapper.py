@@ -22,6 +22,7 @@ def get_twitter_sentiment(query: str, count: int=100, tweets=None):
     '''
 
     if tweets is None:
+        tw_daisi = pyd.Daisi("erichare/Twitter Search")
         tweets = tw_daisi.fetch_tweets(query, count).value
 
     sentiment = sa_daisi.get_sentiment([x for x in tweets["text"].tolist()]).value
