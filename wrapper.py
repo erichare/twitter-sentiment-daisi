@@ -5,7 +5,6 @@ import streamlit as st
 tw_daisi = pyd.Daisi("erichare/Twitter Search")
 sa_daisi = pyd.Daisi("erichare/Sentiment Analysis")
 
-@st.cache
 def _tweet_fetch(query, count):
     tweets = tw_daisi.fetch_tweets(query, count).value
 
