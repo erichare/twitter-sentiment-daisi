@@ -8,7 +8,7 @@ def _tweet_fetch(query, count):
 
     return tweets
 
-def get_twitter_sentiment(query: str, count: int=100, tweets=None):
+def get_twitter_sentiment(query: str, count: int=10, tweets=None):
     '''
     Interface with the Twitter API to fetch tweets related to the given query and derive the sentiment
     
