@@ -25,6 +25,7 @@ def get_twitter_sentiment(query: str, count: int=100, tweets=None):
         tw_daisi = pyd.Daisi("erichare/Twitter Search")
         tweets = tw_daisi.fetch_tweets(query, count).value
 
+    sa_daisi = pyd.Daisi("erichare/Sentiment Analysis")
     sentiment = sa_daisi.get_sentiment([x for x in tweets["text"].tolist()]).value
 
     tweets["sentiment"] = [x["label"] for x in sentiment]
@@ -62,7 +63,6 @@ if __name__ == "__main__":
 
     final_results = []
     element = st.empty()
-    sa_daisi = pyd.Daisi("erichare/Sentiment Analysis")
     with st.spinner('Fetching tweets and computing sentiment...'):
         for i in range(0, count, 10):
             max_ind = min(tweets.shape[0], i + 10)
