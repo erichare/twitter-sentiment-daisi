@@ -2,10 +2,8 @@ import pydaisi as pyd
 import pandas as pd
 import streamlit as st # For UI support
 
-tw_daisi = pyd.Daisi("erichare/Twitter Search")
-sa_daisi = pyd.Daisi("erichare/Sentiment Analysis")
-
 def _tweet_fetch(query, count):
+    tw_daisi = pyd.Daisi("erichare/Twitter Search")
     tweets = tw_daisi.fetch_tweets(query, count).value
 
     return tweets
@@ -63,6 +61,7 @@ if __name__ == "__main__":
 
     final_results = []
     element = st.empty()
+    sa_daisi = pyd.Daisi("erichare/Sentiment Analysis")
     with st.spinner('Fetching tweets and computing sentiment...'):
         for i in range(0, count, 10):
             max_ind = min(tweets.shape[0], i + 10)
