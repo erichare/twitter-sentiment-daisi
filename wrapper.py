@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     st.markdown("## Information")
 
-    st.markdown("This Wrapper Daisi calls two other Daisies, the [Twitter Search](https://app.daisi.io/daisies/5636b873-4ed9-44c2-a737-ad9b95dedfba/info) Daisi, and the [Sentiment Analysis](https://dev3.daisi.io/daisies/dd7ca16b-efeb-47b4-80ca-2f77ef106739/info) Daisi, to perform a Sentiment Analysis of the N most recent tweets related to your query!")
+    st.markdown("This Wrapper Daisi calls two other Daisies, the [Twitter Search](https://app.daisi.io/daisies/erichare/Twitter%20Search/info) Daisi, and the [Sentiment Analysis](https://app.daisi.io/daisies/erichare/Sentiment%20Analysis/info) Daisi, to perform a Sentiment Analysis of the N most recent tweets related to your query!")
     st.markdown("NOTE: Please use PyDaisi and the API interface for processing more than 100 tweets!")
 
     with st.sidebar:
